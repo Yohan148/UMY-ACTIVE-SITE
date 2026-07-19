@@ -122,11 +122,47 @@
       linear-gradient(180deg,var(--ink) 0%, var(--abyss) 100%);
     z-index:0;
   }
-  .fiber-svg{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0.9}
+  .hero-video-wrap{
+    position:absolute;inset:0;z-index:0;overflow:hidden;
+  }
+  .hero-video-wrap video{
+    position:absolute;top:50%;left:50%;
+    min-width:100%;min-height:100%;
+    width:auto;height:auto;
+    transform:translate(-50%,-50%);
+    object-fit:cover;
+  }
+  .hero-video-scrim{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(3,10,24,0.55) 0%, rgba(3,10,24,0.72) 55%, var(--ink) 100%),
+      radial-gradient(60% 50% at 80% 8%, rgba(0,71,184,0.35), transparent);
+    z-index:1;
+  }
+  .sound-toggle{
+    position:absolute;
+    right:24px;bottom:24px;
+    z-index:5;
+    display:flex;align-items:center;gap:8px;
+    background:rgba(5,14,31,0.55);
+    backdrop-filter:blur(10px);
+    border:1px solid var(--line);
+    color:#fff;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;letter-spacing:0.05em;
+    padding:10px 16px;border-radius:100px;
+    cursor:pointer;
+    transition:border-color .25s, transform .25s var(--ease);
+  }
+  .sound-toggle:hover{border-color:rgba(255,255,255,0.4);transform:translateY(-2px)}
+  .sound-toggle .bars{display:flex;align-items:flex-end;gap:2px;height:12px}
+  .sound-toggle .bars i{width:2.5px;background:var(--bio);border-radius:1px;display:block}
+  .sound-toggle.muted .bars i{background:var(--ink-faint)}
+  .fiber-svg{position:absolute;inset:0;width:100%;height:100%;z-index:2;opacity:0.9}
   .fiber-path{fill:none;stroke:url(#fiberGrad);stroke-width:1.4;opacity:0.55}
   .fiber-dot{fill:var(--bio);filter:drop-shadow(0 0 6px var(--bio))}
 
-  .hero-inner{position:relative;z-index:2}
+  .hero-inner{position:relative;z-index:3}
   .hero-top{text-align:center;max-width:900px;margin:0 auto}
   .hero-eyebrow{justify-content:center;color:var(--bio);margin-bottom:22px}
   .hero h1{
@@ -362,6 +398,19 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="hero-bg"></div>
+
+    <div class="hero-video-wrap">
+      <video id="hero-video" autoplay loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+        <source src="assets/hero-video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-video-scrim"></div>
+
+    <button class="sound-toggle" id="sound-toggle" aria-label="Activer le son">
+      <span class="bars"><i style="height:5px"></i><i style="height:11px"></i><i style="height:7px"></i></span>
+      <span id="sound-label">Activer le son</span>
+    </button>
+
     <svg class="fiber-svg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
       <defs>
         <linearGradient id="fiberGrad" x1="0" y1="0" x2="1" y2="1">
@@ -669,6 +718,63 @@
 </footer>
 
 <script>
+  // Hero video: try to autoplay WITH sound. Browsers block this without prior
+  // user interaction, so we attempt unmuted first, fall back to muted + a
+  // visible "Activer le son" toggle that unmutes on click (and on the very
+  // first click/tap/key anywhere on the page, as a courtesy).
+  (function(){
+    const video = document.getElementById('hero-video');
+    const toggle = document.getElementById('sound-toggle');
+    const label = document.getElementById('sound-label');
+    if(!video) return;
+
+    function setMuted(muted){
+      video.muted = muted;
+      if(muted){
+        toggle.classList.add('muted');
+        label.textContent = 'Activer le son';
+      } else {
+        toggle.classList.remove('muted');
+        label.textContent = 'Couper le son';
+      }
+    }
+
+    // 1) Try unmuted autoplay first.
+    video.muted = false;
+    const playAttempt = video.play();
+    if(playAttempt !== undefined){
+      playAttempt.then(()=>{
+        setMuted(false); // unmuted autoplay succeeded
+      }).catch(()=>{
+        // Blocked by browser policy: fall back to muted autoplay.
+        setMuted(true);
+        video.play().catch(()=>{ /* still fails on very strict setups, ignore */ });
+      });
+    }
+
+    // 2) Manual toggle button always works (direct user gesture).
+    toggle.addEventListener('click', ()=>{
+      setMuted(!video.muted);
+      if(video.paused) video.play();
+    });
+
+    // 3) Courtesy: unmute on the user's very first interaction with the page,
+    // if they haven't already used the toggle.
+    let firstInteractionHandled = false;
+    function unmuteOnFirstInteraction(){
+      if(firstInteractionHandled || !video.muted) return;
+      firstInteractionHandled = true;
+      setMuted(false);
+      video.play().catch(()=>{});
+      window.removeEventListener('click', unmuteOnFirstInteraction);
+      window.removeEventListener('keydown', unmuteOnFirstInteraction);
+      window.removeEventListener('touchstart', unmuteOnFirstInteraction);
+    }
+    window.addEventListener('click', unmuteOnFirstInteraction);
+    window.addEventListener('keydown', unmuteOnFirstInteraction);
+    window.addEventListener('touchstart', unmuteOnFirstInteraction);
+  })();
+
   // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
