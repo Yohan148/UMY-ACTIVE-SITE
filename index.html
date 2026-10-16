@@ -3,20 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UMY ACTIVE — La première activewear conçue comme un soin de peau</title>
-<meta name="description" content="UMY ACTIVE réinvente le sportswear : une matière seamless enrichie en fibre de collagène, pensée pour sculpter, soutenir et prendre soin de la peau à chaque mouvement. Précommandez la Série Fondatrice.">
-<meta name="theme-color" content="#050E1F">
+<title>UMY ACTIVE | UMY Black — Activewear inspiré du soin</title>
+<meta name="description" content="Vous prenez soin de votre peau avant et après le sport. Et pendant ? Découvrez UMY Black : legging et brassière seamless, à la rencontre du collagène, de la beauté et du mouvement.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#09090B">
+<meta name="author" content="UMY ACTIVE">
+<meta name="color-scheme" content="dark light">
+<link rel="canonical" href="https://umy-active-site.vercel.app/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/logo-mark.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UMY ACTIVE">
+<meta property="og:title" content="UMY ACTIVE — Et pendant le sport ?">
+<meta property="og:description" content="Une nouvelle génération d'activewear : UMY Black associe silhouette sculptante, beauté et innovation textile au collagène. Découvrez la Collection 001.">
+<meta property="og:url" content="https://umy-active-site.vercel.app/">
+<meta property="og:image" content="https://umy-active-site.vercel.app/assets/umy-hero-concept.jpg">
+<meta property="og:image:secure_url" content="https://umy-active-site.vercel.app/assets/umy-hero-concept.jpg">
+<meta property="og:image:width" content="760">
+<meta property="og:image:height" content="432">
+<meta property="og:image:alt" content="UMY Black — univers premium de la Collection 001">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UMY ACTIVE — Et pendant le sport ?">
+<meta name="twitter:description" content="UMY Black : une nouvelle vision de l'activewear à la rencontre du sport et du soin.">
+<meta name="twitter:image" content="https://umy-active-site.vercel.app/assets/umy-hero-concept.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"UMY ACTIVE","url":"https://umy-active-site.vercel.app/","logo":"https://umy-active-site.vercel.app/assets/logo-mark.png","description":"UMY ACTIVE, marque d'activewear inspiré du soin."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"UMY ACTIVE","url":"https://umy-active-site.vercel.app/","inLanguage":"fr-FR"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#050E1F;
-    --abyss:#030A18;
-    --umy-blue:#0047B8;
-    --umy-blue-2:#003890;
-    --current:#7DD3FC;
-    --bio:#8CFFE0;
+    --ink:#09090B;
+    --abyss:#050506;
+    --umy-blue:#303038;
+    --umy-blue-2:#151519;
+    --current:#F0CEC0;
+    --bio:#E8C8B9;
     --paper:#F3F7FB;
     --paper-2:#E9F1F8;
     --ink-soft:rgba(243,247,251,0.68);
@@ -101,13 +124,44 @@
     cursor:pointer;border:none;
   }
   .btn-primary{background:var(--bio);color:var(--abyss)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -6px rgba(140,255,224,0.45)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -6px rgba(232,200,185,0.45)}
   .btn-ghost{border:1px solid var(--line);color:#fff;background:transparent}
   .btn-ghost:hover{border-color:rgba(255,255,255,0.4)}
   .btn-dark{background:var(--ink);color:#fff}
   .btn-dark:hover{transform:translateY(-2px)}
   .btn-block{width:100%;justify-content:center;padding:16px 22px;font-size:15.5px}
 
+  /* ---------- EDITORIAL VISUAL STORY ---------- */
+  .umy-story{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:48px}
+  .umy-story-image{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);min-height:340px;background:#17171b}
+  .umy-story-image img{width:100%;height:100%;min-height:340px;object-fit:cover}
+  .umy-story-caption{position:absolute;bottom:16px;left:16px;right:16px;background:rgba(9,9,11,.74);color:#fff;padding:12px 15px;border-radius:12px;font-size:12px;backdrop-filter:blur(8px)}
+  .umy-story-copy{max-width:560px}
+  .umy-story-copy .manifesto-stmt{font-size:clamp(24px,3vw,38px)}
+  .umy-story-copy .story-body{margin-top:24px;color:var(--ink-soft);line-height:1.8;font-size:16px}
+  .umy-gallery{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;margin-top:20px}
+  .umy-gallery figure{margin:0;border-radius:22px;overflow:hidden;background:#e9e6e3;position:relative}
+  .umy-gallery img{display:block;width:100%;height:100%;min-height:270px;object-fit:cover}
+  .umy-gallery figcaption{position:absolute;bottom:12px;left:12px;background:rgba(9,9,11,.8);color:#fff;padding:8px 12px;border-radius:100px;font-size:11px}
+  @media(max-width:820px){.umy-story,.umy-gallery{grid-template-columns:1fr;gap:22px}.umy-story-image,.umy-story-image img{min-height:260px}.umy-gallery img{min-height:220px}}
+
+.umy-editorial-macro,.umy-editorial-product,.umy-editorial-campaign{position:relative;border-radius:22px;overflow:hidden;margin:0 0 30px;background:#17171b}
+.umy-editorial-macro img{width:100%;max-height:400px;object-fit:cover;display:block}
+.umy-editorial-product img{width:100%;max-height:560px;object-fit:cover;display:block}
+.umy-editorial-campaign img{width:100%;max-height:460px;object-fit:cover;display:block}
+.umy-editorial-macro figcaption,.umy-editorial-product figcaption,.umy-editorial-campaign figcaption{position:absolute;bottom:12px;left:12px;background:rgba(7,7,9,.78);color:white;padding:9px 13px;border-radius:12px;font-size:11px;letter-spacing:.04em}
+@media(max-width:640px){.umy-editorial-macro img,.umy-editorial-product img,.umy-editorial-campaign img{height:auto;max-height:none}.umy-editorial-product figcaption{position:static;border-radius:0}}
+  /* ---------- SIMPLE PREORDER CHECKOUT ---------- */
+  .umy-checkout-form{display:grid;gap:15px;margin-top:22px}
+  .umy-size-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .umy-size-grid label{display:grid;gap:8px;font-size:13px;font-weight:600;color:#1e2029}
+  .umy-size-grid select{width:100%;font:inherit;font-size:15px;color:#17171b;background:#fff;border:1px solid #cdd0d6;border-radius:12px;padding:13px 10px}
+  .umy-size-grid select:focus-visible{outline:3px solid #dfc0b6;outline-offset:2px}
+  .umy-size-note{font-size:12px;line-height:1.5;color:#657084}
+  .umy-order-summary{display:flex;flex-direction:column;gap:5px;border:1px solid #e4e4e8;padding:12px;border-radius:12px;font-size:13px}
+  .umy-checkout-status{color:#596171;font-size:12px;line-height:1.5}
+  #stripe-cta:disabled{opacity:.6;cursor:not-allowed;transform:none}
+  @media(max-width:420px){.umy-size-grid{grid-template-columns:1fr}}
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
@@ -117,8 +171,8 @@
   .hero-bg{
     position:absolute;inset:0;
     background:
-      radial-gradient(60% 50% at 80% 8%, rgba(0,71,184,0.55), transparent),
-      radial-gradient(45% 40% at 8% 90%, rgba(140,255,224,0.10), transparent),
+      radial-gradient(60% 50% at 80% 8%, rgba(126,104,110,0.55), transparent),
+      radial-gradient(45% 40% at 8% 90%, rgba(232,200,185,0.10), transparent),
       linear-gradient(180deg,var(--ink) 0%, var(--abyss) 100%);
     z-index:0;
   }
@@ -136,7 +190,7 @@
     position:absolute;inset:0;
     background:
       linear-gradient(180deg, rgba(3,10,24,0.55) 0%, rgba(3,10,24,0.72) 55%, var(--ink) 100%),
-      radial-gradient(60% 50% at 80% 8%, rgba(0,71,184,0.35), transparent);
+      radial-gradient(60% 50% at 80% 8%, rgba(126,104,110,0.35), transparent);
     z-index:1;
   }
   .sound-toggle{
@@ -233,7 +287,7 @@
   .manifesto-body p{margin-top:22px;font-size:16px;line-height:1.7;color:var(--ink-soft)}
   .manifesto-diagram{
     border:1px solid var(--line);border-radius:24px;padding:36px;
-    background:linear-gradient(160deg,rgba(0,71,184,0.22),rgba(5,14,31,0.4));
+    background:linear-gradient(160deg,rgba(126,104,110,0.22),rgba(5,14,31,0.4));
     position:relative;overflow:hidden;
   }
   .diagram-rows{display:flex;flex-direction:column;gap:0}
@@ -262,7 +316,7 @@
   .cc{padding:20px 24px;font-size:14.5px;display:flex;align-items:center;gap:10px}
   .crow:not(.head) .cc:first-child{font-weight:600;color:var(--ink)}
   .crow:not(.head) .cc:not(:first-child){color:rgba(5,14,31,0.55);border-left:1px solid var(--line-dark)}
-  .crow:not(.head) .cc.hi{background:rgba(0,71,184,0.05);color:var(--umy-blue);font-weight:600}
+  .crow:not(.head) .cc.hi{background:rgba(126,104,110,0.05);color:var(--umy-blue);font-weight:600}
   .tick{color:var(--umy-blue)}
   .cross{color:rgba(5,14,31,0.28)}
   @media(max-width:640px){.crow{grid-template-columns:1.2fr 1fr 1fr}.cc{padding:14px 12px;font-size:12.5px}}
@@ -296,7 +350,7 @@
   @media(max-width:900px){.preorder{grid-template-columns:1fr;padding:38px 26px}}
   .preorder::after{
     content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;
-    background:radial-gradient(circle,rgba(140,255,224,0.25),transparent 70%);
+    background:radial-gradient(circle,rgba(232,200,185,0.25),transparent 70%);
   }
   .preorder h2{color:#fff;font-size:clamp(26px,3.6vw,38px);line-height:1.15}
   .preorder ul{margin-top:26px;display:flex;flex-direction:column;gap:14px}
@@ -384,7 +438,7 @@
   <div class="nav-inner">
     <a href="#top" class="brand"><img src="assets/logo-mark.png" alt="UMY"> UMY ACTIVE</a>
     <nav class="navlinks">
-      <a href="#tech">La technologie</a>
+      <a href="#story">Notre vision</a><a href="#tech">La technologie</a>
       <a href="#product">Le SET 01</a>
       <a href="#compare">Pourquoi c'est nouveau</a>
       <a href="#faq">FAQ</a>
@@ -426,17 +480,17 @@
 
     <div class="wrap hero-inner">
       <div class="hero-top">
-        <div class="eyebrow hero-eyebrow">Precision Fiber Technology™ — Édition 001</div>
-        <h1>Le sport ne devrait pas <em>abîmer</em> votre peau.<br>Nous, on l'a réparé.</h1>
-        <p class="lede">UMY ACTIVE est la première activewear construite comme un soin de peau : une matière seamless tissée avec une fibre enrichie en collagène, pensée pour sculpter la silhouette pendant l'effort — pas seulement après.</p>
+        <div class="eyebrow hero-eyebrow">UMY ACTIVE — MOVE. SHAPE. GLOW.</div>
+        <h1>Vous prenez soin de votre peau<br>avant et après le sport.<br><em>Et pendant ?</em></h1>
+        <p class="lede">UMY ACTIVE repense le vêtement de sport avec une fibre enrichie en collagène, pour réunir beauté, mouvement et innovation.</p>
         <div class="hero-ctas">
           <a href="#order" class="btn btn-primary">Réserver mon SET 01 →</a>
           <a href="#tech" class="btn btn-ghost">Comprendre la technologie</a>
         </div>
         <div class="hero-meta">
           <div><span>200</span> sets fondateurs</div>
-          <div><span>1ère</span> marque fibre-collagène en France</div>
-          <div><span>−20%</span> tarif fondateur, à vie sur le SET 01</div>
+          <div><span>001</span> Collection UMY Black</div>
+          <div><span>SET 01</span> legging + brassière</div>
         </div>
       </div>
 
@@ -449,51 +503,49 @@
 
   <div class="marquee-wrap">
     <div class="marquee">
-      <span>FIBRE COLLAGÈNE<span></span></span><span>SEAMLESS 360°<span></span></span><span>MAINTIEN SCULPTANT<span></span></span><span>SÉRIE FONDATRICE — 200 EX.<span></span></span><span>FIBRE COLLAGÈNE<span></span></span><span>SEAMLESS 360°<span></span></span><span>MAINTIEN SCULPTANT<span></span></span><span>SÉRIE FONDATRICE — 200 EX.<span></span></span>
+      <span>COLLAGÈNE CÔTÉ PEAU<span></span></span><span>SEAMLESS 360°<span></span></span><span>MAINTIEN SCULPTANT<span></span></span><span>SÉRIE FONDATRICE — 200 EX.<span></span></span><span>COLLAGÈNE CÔTÉ PEAU<span></span></span><span>SEAMLESS 360°<span></span></span><span>MAINTIEN SCULPTANT<span></span></span><span>SÉRIE FONDATRICE — 200 EX.<span></span></span>
     </div>
   </div>
 
   <!-- ============ MANIFESTO ============ -->
-  <section class="sec-dark">
-    <div class="wrap manifesto">
-      <div class="reveal">
-        <div class="eyebrow sec-eyebrow">Le constat</div>
-        <p class="manifesto-stmt">Le marché du sportswear a optimisé la performance pendant vingt ans. <span>Il a oublié le corps qui la produit.</span> Compression, transpiration, frottements répétés : la peau encaisse tout, sans qu'aucune matière ne lui rende quelque chose.</p>
+  <section class="sec-dark" id="story">
+    <div class="wrap umy-story">
+      <div class="umy-story-copy reveal">
+        <div class="eyebrow sec-eyebrow">Pourquoi UMY existe</div>
+        <h2 class="manifesto-stmt">Et si votre tenue de sport devenait aussi un geste beauté ?</h2>
+        <p class="story-body">Pendant des années, les vêtements de sport ont été pensés pour la performance, le maintien et la silhouette.</p>
+        <p class="story-body">Chez UMY ACTIVE, nous avons voulu aller plus loin. Nous avons imaginé une nouvelle génération d’activewear, où le design sculptant rencontre une innovation textile inspirée du soin de la peau.</p>
+        <p class="story-body"><strong>Parce que prendre soin de soi ne devrait pas s’arrêter au moment de commencer son entraînement.</strong></p>
       </div>
-      <div class="manifesto-diagram reveal">
-        <div class="diagram-rows">
-          <div class="drow"><div class="dl">Activewear classique</div><div class="dv">Contient<small>Élasthanne, polyamide, nylon</small></div></div>
-          <div class="drow"><div class="dl">UMY Precision Fiber</div><div class="dv">Contient<small>+ fibre enrichie en collagène</small></div></div>
-          <div class="drow"><div class="dl">Construction</div><div class="dv">Seamless 360°<small>Zéro couture visible aux zones de friction</small></div></div>
-          <div class="drow"><div class="dl">Positionnement</div><div class="dv">Precursor<small>1ère matière hybride sport × soin en France</small></div></div>
-        </div>
-      </div>
+      <figure class="umy-story-image reveal">
+        <img loading="lazy" src="assets/umy-lifestyle-concept.jpg" alt="Visuel d’ambiance UMY Black : femme en mouvement dans un studio lumineux">
+        <figcaption class="umy-story-caption">BEAUTY × MOVEMENT · L'univers UMY</figcaption>
+      </figure>
     </div>
   </section>
-
-  <!-- ============ TECHNOLOGY ============ -->
   <section class="sec-abyss" id="tech">
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="eyebrow sec-eyebrow">La technologie</div>
-        <h2>Une fibre pensée en trois temps.</h2>
-        <p>Chaque fil de la matière UMY est co-tissé avec des microparticules de collagène, libérées progressivement par la chaleur et le frottement naturel du mouvement — au fil de vos séances, pas en une fois.</p>
+        <h2>Le collagène entre dans votre vestiaire sportif.</h2>
+        <p>Et si l’innovation beauté ne se limitait plus à vos crèmes et à vos sérums ? Avec UMY ACTIVE, nous explorons une nouvelle manière de concevoir les vêtements de sport : une matière enrichie en collagène, associée à une coupe sculptante et à un confort pensé pour le mouvement. Une nouvelle rencontre entre le textile, la beauté et le sport.</p>
       </div>
+      <figure class="umy-editorial-macro reveal"><img loading="lazy" src="assets/umy-matiere-concept.jpg" alt="Interprétation artistique de la texture d’un textile noir"><figcaption>LA MATIÈRE · VISION ARTISTIQUE</figcaption></figure>
       <div class="process reveal">
         <div class="pstep">
-          <div class="pnum">01 — LA FIBRE</div>
-          <h3>Co-tissage collagène</h3>
-          <p>Le fil technique seamless est enrichi d'une fibre à base de collagène marin, fixée à la structure de la maille et libérée progressivement au contact de la peau et de la chaleur corporelle.</p>
+          <div class="pnum">01 — L’INNOVATION AU COLLAGÈNE</div>
+          <h3>Une fibre enrichie en collagène</h3>
+          <p>Une technologie textile associant la matière de sport à un traitement au collagène côté peau.</p>
         </div>
         <div class="pstep">
-          <div class="pnum">02 — LE MOUVEMENT</div>
-          <h3>Libération par friction</h3>
-          <p>La chaleur corporelle et le contact peau-matière activent une libération progressive au fil de l'effort, sur les zones ciblées : ventre, hanches, fessiers, cuisses.</p>
+          <div class="pnum">02 — BEAUTÉ & MOUVEMENT</div>
+          <h3>La beauté rencontre le mouvement</h3>
+          <p>Un vêtement qui rapproche l'univers du soin de celui de l’activewear, pour repenser votre façon de vous habiller avant chaque séance.</p>
         </div>
         <div class="pstep">
-          <div class="pnum">03 — LA SILHOUETTE</div>
-          <h3>Maintien sculptant</h3>
-          <p>La ceinture haute et la construction 360° compriment intelligemment sans marquer, pour un galbe net pendant l'effort et une sensation seconde peau après.</p>
+          <div class="pnum">03 — UNE SILHOUETTE SUBLIMÉE</div>
+          <h3>Une silhouette mise en valeur</h3>
+          <p>Une construction seamless et une coupe sculptante imaginées pour accompagner vos mouvements tout en valorisant vos formes.</p>
         </div>
       </div>
     </div>
@@ -504,8 +556,8 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="eyebrow sec-eyebrow">Pourquoi c'est nouveau</div>
-        <h2>Personne n'a construit le sportswear dans ce sens-là.</h2>
-        <p>Les marques de legging optimisent la coupe. Les marques de soin optimisent la formule. UMY est la première à faire porter les deux par la même matière.</p>
+        <h2>Et si le futur de l'activewear s'inspirait du soin ?</h2>
+        <p>Pourquoi choisir entre style, mouvement et innovation ? UMY rapproche la silhouette sculptante des codes du soin dans un seul ensemble.</p>
       </div>
       <div class="compare reveal">
         <div class="crow head">
@@ -516,22 +568,22 @@
         <div class="crow">
           <div class="cc">Matière</div>
           <div class="cc">Élasthanne / polyamide standard</div>
-          <div class="cc hi">Fibre co-tissée enrichie en collagène</div>
+          <div class="cc hi">Traitement au collagène côté intérieur</div>
         </div>
         <div class="crow">
           <div class="cc">Construction</div>
           <div class="cc"><span class="cross">✕</span> Coutures latérales visibles</div>
-          <div class="cc hi"><span class="tick">✓</span> Seamless 360°, zéro friction</div>
+          <div class="cc hi"><span class="tick">✓</span> Construction seamless 360°</div>
         </div>
         <div class="crow">
           <div class="cc">Effet recherché</div>
           <div class="cc">Compression uniquement</div>
-          <div class="cc hi">Compression + soin de la matière</div>
+          <div class="cc hi">Coupe sculptante + approche inspirée du soin</div>
         </div>
         <div class="crow">
           <div class="cc">Positionnement</div>
           <div class="cc">Suiveur d'une catégorie existante</div>
-          <div class="cc hi">Créateur d'une nouvelle catégorie</div>
+          <div class="cc hi">Notre vision du beauty activewear</div>
         </div>
         <div class="crow">
           <div class="cc">Disponibilité</div>
@@ -547,13 +599,17 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="eyebrow sec-eyebrow">La première collection</div>
-        <h2>UMY ACTIVE — SET 01</h2>
-        <p>Un ensemble noir profond, minimaliste et sculptant : brassière à dos nageur + legging taille haute. Conçu pour devenir l'essentiel que vous portez tous les jours, pas seulement à la salle.</p>
+        <h2>Le noir iconique. L’innovation en plus.</h2>
+        <p>Découvrez SET 01, notre premier ensemble composé d’un legging taille haute et d’une brassière à dos nageur. Une silhouette sculptée, une esthétique intemporelle et une matière enrichie en collagène. Chaque détail est pensé pour accompagner vos mouvements avec élégance. Plus qu’une tenue de sport : votre nouvel essentiel beauté & mouvement.</p>
       </div>
 
       <div class="product-hero reveal">
         <img src="assets/product-details.jpg" alt="Détails du legging et de la brassière UMY ACTIVE vus de face, de dos et de profil">
       </div>
+
+      
+
+      <figure class="umy-editorial-product reveal"><img loading="lazy" src="assets/umy-produit-concept.jpg" alt="Visuel conceptuel : silhouette et détails d’un ensemble de sport noir"><figcaption>SET 01 · INSPIRATION VISUELLE — VISUELS DU PROTOTYPE À VENIR</figcaption></figure>
 
       <div class="product-grid reveal">
         <div class="pcard">
@@ -580,13 +636,13 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="eyebrow sec-eyebrow">Ce que vous ressentez</div>
-        <h2>Conçue pour performer. Pensée pour prendre soin.</h2>
+        <h2>Une tenue de sport. Une nouvelle vision du soin.</h2>
       </div>
       <div class="benefits reveal">
         <div class="bcard"><div class="bnum">01</div><h3>Confort seamless</h3><p>Aucune couture latérale aux zones de friction — la matière épouse, elle ne marque pas.</p></div>
         <div class="bcard"><div class="bnum">02</div><h3>Maintien ciblé</h3><p>Ceinture haute shaping et construction 360° pour une silhouette nette sans effet garrot.</p></div>
         <div class="bcard"><div class="bnum">03</div><h3>Mobilité totale</h3><p>Stretch quatre sens, dos nageur, coupe ergonomique pensée pour le squat comme pour le sprint.</p></div>
-        <div class="bcard"><div class="bnum">04</div><h3>Matière enrichie</h3><p>Fibre co-tissée collagène activée par le mouvement, sur les zones les plus sollicitées.</p></div>
+        <div class="bcard"><div class="bnum">04</div><h3>Matière enrichie</h3><p>Traitement au collagène appliqué sur la face intérieure du tissu, côté peau.</p></div>
       </div>
     </div>
   </section>
@@ -602,42 +658,42 @@
   <!-- ============ PREORDER ============ -->
   <section class="sec-dark" id="order">
     <div class="wrap">
+      <figure class="umy-editorial-campaign reveal"><img loading="lazy" src="assets/umy-hero-concept.jpg" alt="Campagne d'inspiration UMY Black, femme en tenue de sport noire"><figcaption>UMY BLACK · CAMPAGNE CONCEPT</figcaption></figure>
       <div class="preorder reveal">
         <div>
           <div class="eyebrow" style="color:var(--bio)">Série fondatrice — 200 exemplaires</div>
-          <h2 style="margin-top:16px">Précommandez le SET 01 avant le lancement officiel.</h2>
+          <h2 style="margin-top:16px">Soyez parmi les premières à porter l’innovation.</h2>
           <ul>
-            <li><span class="chk">✓</span>Tarif fondateur bloqué à vie sur le SET 01, réservé aux 200 premières précommandes</li>
-            <li><span class="chk">✓</span>Numéro de série personnel + accès prioritaire aux futures collections</li>
-            <li><span class="chk">✓</span>Livraison prioritaire dès la sortie d'usine, avant la vente publique</li>
-            <li><span class="chk">✓</span>Paiement 100% sécurisé via Stripe — annulation possible avant expédition</li>
+            <li><span class="chk">✓</span>Édition fondatrice limitée à 200 ensembles prévus</li>
+            <li><span class="chk">✓</span>Un ensemble complet : legging et brassière UMY Black</li>
+            <li><span class="chk">✓</span>Choix des tailles du legging et de la brassière avant le paiement, à l’ouverture</li>
+            <li><span class="chk">✓</span>Paiement sécurisé via Stripe dès l’ouverture officielle des préventes</li>
           </ul>
         </div>
 
         <div class="order-card">
           <span class="badge">Offre fondatrice</span>
           <div class="price-row">
-            <div class="price-now">89€</div>
-            <div class="price-was">112€</div>
+            <div class="price-now">89 €</div>
+            
           </div>
-          <div class="price-note">Set complet legging + brassière · UMY Black · tarif réservé aux précommandes</div>
+          <div class="price-note">Set complet legging + brassière · UMY Black · prix provisoire à confirmer</div>
 
-          <div class="stock-bar">
-            <div class="stock-track"><div class="stock-fill"></div></div>
-            <div class="stock-label">128 / 200 sets fondateurs réservés</div>
-          </div>
-
-          <div class="countdown" id="countdown">
-            <div class="cbox"><div class="cval" id="cd-days">--</div><div class="clabel">Jours</div></div>
-            <div class="cbox"><div class="cval" id="cd-hours">--</div><div class="clabel">Heures</div></div>
-            <div class="cbox"><div class="cval" id="cd-min">--</div><div class="clabel">Min</div></div>
-            <div class="cbox"><div class="cval" id="cd-sec">--</div><div class="clabel">Sec</div></div>
-          </div>
-
-          <a href="https://buy.stripe.com/REMPLACER_PAR_VOTRE_LIEN" class="btn btn-dark btn-block" id="stripe-cta">
-            Précommander en toute sécurité →
-          </a>
-          <p class="order-fine">Paiement sécurisé par Stripe. Livraison estimée : 6 à 8 semaines après clôture de la série fondatrice.</p>
+          <form id="preorder-form" class="umy-checkout-form">
+            <div class="umy-size-grid">
+              <label for="legging-size">Taille du legging
+                <select id="legging-size" name="legging" required><option value="">Choisir</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+              </label>
+              <label for="bra-size">Taille de la brassière
+                <select id="bra-size" name="brassiere" required><option value="">Choisir</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+              </label>
+            </div>
+            <p class="umy-size-note">Les tailles XS à XL sont présentées à titre de préparation. Le guide définitif sera publié avant l'ouverture.</p>
+            <div class="umy-order-summary"><span>SET 01 · Noir · 1 ensemble</span><strong id="umy-size-summary">Sélectionnez vos deux tailles</strong></div>
+            <button type="submit" class="btn btn-dark btn-block" id="stripe-cta" disabled>Précommander mon SET 01 — bientôt disponible</button>
+            <p id="checkout-status" class="umy-checkout-status" role="status" aria-live="polite">Les préventes ne sont pas encore ouvertes.</p>
+          </form>
+          <p class="order-fine">Les paiements ne sont pas encore ouverts. Le prix et le délai de livraison seront confirmés avant toute commande.</p>
         </div>
       </div>
     </div>
@@ -652,8 +708,8 @@
       </div>
       <div class="faq reveal">
         <div class="faq-item">
-          <button class="faq-q"><span>Qu'est-ce que la fibre enrichie en collagène change concrètement ?</span><span class="plus"></span></button>
-          <div class="faq-a"><p>La fibre technique de la matière UMY est co-tissée avec des microparticules de collagène, intégrées directement dans la structure de la maille. Elles sont conçues pour être libérées progressivement au contact de la peau et de la chaleur corporelle pendant l'effort, en complément — pas en remplacement — d'une routine de soin.</p></div>
+          <button class="faq-q"><span>Comment fonctionne le traitement au collagène d'UMY ?</span><span class="plus"></span></button>
+          <div class="faq-a"><p>Le collagène est appliqué comme traitement sur la face intérieure du textile, et non incorporé aux fibres. C'est cette finition particulière, associée au design seamless, qui distingue notre approche de l'activewear.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q"><span>Pourquoi seulement 200 sets pour la série fondatrice ?</span><span class="plus"></span></button>
@@ -661,7 +717,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q"><span>Quand vais-je recevoir ma commande ?</span><span class="plus"></span></button>
-          <div class="faq-a"><p>La production démarre à la clôture de la série fondatrice. Comptez 6 à 8 semaines entre la fin de la précommande et l'expédition. Vous recevrez un e-mail de suivi à chaque étape, de la confirmation à l'expédition.</p></div>
+          <div class="faq-a"><p>La date d'expédition sera indiquée au moment de la précommande, une fois le calendrier de production confirmé.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q"><span>Comment choisir ma taille ?</span><span class="plus"></span></button>
@@ -672,8 +728,8 @@
           <div class="faq-a"><p>Oui. Vous pouvez annuler votre précommande et être intégralement remboursé à tout moment avant l'expédition de votre colis. Il vous suffit de nous écrire à contact@umyactive.com.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span>Comment entretenir la matière pour préserver la fibre collagène ?</span><span class="plus"></span></button>
-          <div class="faq-a"><p>Nous recommandons un lavage à la main, à l'eau froide (moins de 30°C), sans essorage agressif. Comme tout actif intégré à une matière textile, son effet diminue progressivement au fil des lavages répétés — un entretien doux permet de préserver la fibre plus longtemps.</p></div>
+          <button class="faq-q"><span>Comment entretenir le traitement intérieur au collagène ?</span><span class="plus"></span></button>
+          <div class="faq-a"><p>Les consignes exactes de lavage seront fournies avec le produit, en fonction des caractéristiques validées du textile et de son traitement intérieur.</p></div>
         </div>
       </div>
     </div>
@@ -682,8 +738,8 @@
   <!-- ============ FOOTER CTA ============ -->
   <section class="footer-cta sec-dark">
     <div class="wrap">
-      <h2 class="reveal" style="margin:0 auto">Rejoignez les 200 premières à porter UMY ACTIVE.</h2>
-      <p class="reveal">Tarif fondateur, série numérotée, accès prioritaire. L'offre se referme dès le 200ᵉ set réservé.</p>
+      <h2 class="reveal" style="margin:0 auto">Soyez parmi les premières à porter l’innovation.</h2>
+      <p class="reveal">Découvrez UMY Black. La première série se prépare : ouverture des précommandes dès confirmation de la production.</p>
       <div class="hero-ctas reveal">
         <a href="#order" class="btn btn-primary">Réserver mon SET 01 →</a>
       </div>
@@ -697,7 +753,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <img src="assets/logo-wordmark.png" alt="UMY ACTIVE">
-        <p>Move. Shape. Glow. La première activewear construite comme un soin de peau — matière seamless enrichie en fibre de collagène, série fondatrice limitée à 200 exemplaires.</p>
+        <p>Move. Shape. Glow. UMY Black : un ensemble seamless avec traitement intérieur au collagène, à la rencontre du sport et du soin.</p>
       </div>
       <div class="foot-cols">
         <div class="foot-col">
@@ -826,29 +882,41 @@
     animateDots('dotsB', 1, 2, 12);
   }
 
-  // Countdown — 14 days from first load, persisted
+  // Le compte à rebours sera activé seulement pour une vraie échéance de précommande.
+  // Précommande : le catalogue n'est pas encore ouvert. Les tailles sont collectées avant Stripe.
+  // Au lancement, basculer PREORDERS_OPEN à true SEULEMENT après avoir configuré le serveur
+  // (UMY_PREORDERS_ENABLED, STRIPE_SECRET_KEY, STRIPE_PRICE_ID, STRIPE_SHIPPING_RATE_ID)
+  // et après confirmation des tailles, du prix, de la livraison et des conditions de vente.
   (function(){
-    const KEY = 'umy_deadline';
-    let deadline = localStorage.getItem(KEY);
-    if(!deadline){
-      deadline = Date.now() + 14*24*60*60*1000;
-      localStorage.setItem(KEY, deadline);
+    const PREORDERS_OPEN = false;
+    const form = document.getElementById('preorder-form');
+    const button = document.getElementById('stripe-cta');
+    const status = document.getElementById('checkout-status');
+    const summary = document.getElementById('umy-size-summary');
+    if(!form || !button || !status || !summary) return;
+    const legging = document.getElementById('legging-size');
+    const bra = document.getElementById('bra-size');
+    function refresh(){
+      summary.textContent = legging.value && bra.value ? 'Legging ' + legging.value + ' · Brassière ' + bra.value : 'Sélectionnez vos deux tailles';
+      button.disabled = !PREORDERS_OPEN || !legging.value || !bra.value;
+      button.textContent = PREORDERS_OPEN ? 'Payer ma précommande →' : 'Précommander mon SET 01 — bientôt disponible';
     }
-    deadline = parseInt(deadline, 10);
-    function tick(){
-      const now = Date.now();
-      let diff = Math.max(0, deadline - now);
-      const d = Math.floor(diff/86400000); diff -= d*86400000;
-      const h = Math.floor(diff/3600000); diff -= h*3600000;
-      const m = Math.floor(diff/60000); diff -= m*60000;
-      const s = Math.floor(diff/1000);
-      document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
-      document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-      document.getElementById('cd-min').textContent = String(m).padStart(2,'0');
-      document.getElementById('cd-sec').textContent = String(s).padStart(2,'0');
-    }
-    tick();
-    setInterval(tick, 1000);
+    legging.addEventListener('change',refresh);
+    bra.addEventListener('change',refresh);
+    refresh();
+    form.addEventListener('submit',async function(event){
+      event.preventDefault();
+      if(!PREORDERS_OPEN || !legging.value || !bra.value) return;
+      button.disabled = true; status.textContent = 'Redirection vers le paiement sécurisé…';
+      try{
+        const response = await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({legging:legging.value,brassiere:bra.value})});
+        const data = await response.json();
+        if(!response.ok || !data.url) throw new Error(data.error || 'Paiement indisponible');
+        const url = new URL(data.url);
+        if(url.protocol !== 'https:' || !url.hostname.endsWith('.stripe.com')) throw new Error('Adresse de paiement invalide');
+        window.location.assign(url.href);
+      }catch(err){status.textContent = 'Le paiement est momentanément indisponible. Réessayez plus tard.';refresh();}
+    });
   })();
 </script>
 

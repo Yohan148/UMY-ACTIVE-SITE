@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://umy-active-site.vercel.app/sitemap.xml
