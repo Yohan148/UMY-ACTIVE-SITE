@@ -4,12 +4,16 @@ const SIZES = new Set(['XS','S','M','L','XL']);
 export default async function handler(request, response) {
   response.setHeader('Cache-Control', 'no-store');
   if(request.method !== 'POST') return response.status(405).json({error:'Méthode non autorisée'});
-  if(process.env.UMY_TEST_CHECKOUT_ENABLED !== 'true') return response.status(503).json({error:'Paiement test non activé'});
+  const live = process.env.UMY_LIVE_CHECKOUT_ENABLED === 'true';
+  if(!live && process.env.UMY_TEST_CHECKOUT_ENABLED !== 'true') return response.status(503).json({error:'Paiement non activé'});
   const secret = process.env.STRIPE_SECRET_KEY;
-  const price = process.env.STRIPE_PRICE_ID;
+  const price = live ? process.env.STRIPE_LIVE_PRICE_ID : process.env.STRIPE_PRICE_ID;
   const publicUrl = process.env.UMY_SITE_URL;
   if(!secret || !price || !publicUrl) return response.status(503).json({error:'Configuration de paiement incomplète'});
-  if(!secret.startsWith('sk_test_')) return response.status(503).json({error:'Clé Stripe Sandbox requise pour les essais'});
+  if(live) {
+    if(!secret.startsWith('sk_live_') || price !== 'price_1USDYsDPF7nqy2Ih6r9nhNSg') return response.status(503).json({error:'Paramètres Stripe réels non validés'});
+    if(!process.env.UMY_LIVE_SHIPPING_DESCRIPTION || !process.env.UMY_LIVE_DELIVERY_ESTIMATE) return response.status(503).json({error:'Livraison réelle non configurée'});
+  } else if(!secret.startsWith('sk_test_')) return response.status(503).json({error:'Clé Stripe Sandbox requise pour les essais'});
   const {legging,brassiere} = request.body || {};
   if(!SIZES.has(legging) || !SIZES.has(brassiere)) return response.status(400).json({error:'Tailles invalides'});
   let base;
@@ -24,13 +28,14 @@ export default async function handler(request, response) {
   params.set('shipping_options[0][shipping_rate_data][type]','fixed_amount');
   params.set('shipping_options[0][shipping_rate_data][fixed_amount][amount]','0');
   params.set('shipping_options[0][shipping_rate_data][fixed_amount][currency]','eur');
-  params.set('shipping_options[0][shipping_rate_data][display_name]','Livraison test (0 €)');
+  params.set('shipping_options[0][shipping_rate_data][display_name]',live ? process.env.UMY_LIVE_SHIPPING_DESCRIPTION : 'Livraison test (0 €)');
   params.set('shipping_address_collection[allowed_countries][0]','FR');
   params.set('billing_address_collection','required');
   params.set('phone_number_collection[enabled]','true');
   params.set('metadata[legging_size]',legging);
   params.set('metadata[bra_size]',brassiere);
   params.set('metadata[collection]','UMY BLACK - SET 01');
+  if(live) params.set('metadata[delivery_estimate]',process.env.UMY_LIVE_DELIVERY_ESTIMATE);
   params.set('payment_intent_data[metadata][legging_size]',legging);
   params.set('payment_intent_data[metadata][bra_size]',brassiere);
   params.set('success_url',new URL('/?checkout=return&session_id={CHECKOUT_SESSION_ID}',base).href);
