@@ -882,6 +882,27 @@
     animateDots('dotsB', 1, 2, 12);
   }
 
+  // Confirmation affichée uniquement après vérification Stripe côté serveur.
+  (async function(){
+    const params=new URLSearchParams(window.location.search);
+    const state=params.get('checkout');
+    if(state!=='return'&&state!=='cancel')return;
+    const banner=document.createElement('div');
+    banner.setAttribute('role','status');
+    banner.style.cssText='position:fixed;z-index:10000;bottom:20px;left:20px;right:20px;max-width:500px;margin:auto;padding:18px 22px;background:#141418;color:#f2d3c5;border:1px solid #e8c8b9;border-radius:14px;box-shadow:0 12px 40px #0009;font:500 14px/1.6 Inter,sans-serif';
+    document.body.appendChild(banner);
+    if(state==='cancel'){banner.textContent='Paiement test annulé : aucun achat effectué.';return;}
+    banner.textContent='Vérification de votre paiement test Stripe…';
+    const id=params.get('session_id');
+    if(!id){banner.textContent='Impossible de vérifier cette session.';return;}
+    try{
+      const result=await fetch('/api/verify-checkout?session_id='+encodeURIComponent(id),{cache:'no-store'});
+      const data=await result.json();
+      if(!result.ok)throw new Error('check failed');
+      banner.textContent=data.paid?'Paiement TEST confirmé ! Legging '+(data.legging||'—')+' · Brassière '+(data.brassiere||'—')+'. Aucune commande réelle.':'Paiement non confirmé. Vérifiez la session dans Stripe Sandbox.';
+    }catch{banner.textContent='La confirmation automatique n’est pas disponible. Vérifiez le statut dans Stripe Sandbox.';}
+  })();
+
   // Le compte à rebours sera activé seulement pour une vraie échéance de précommande.
   // Précommande : le catalogue n'est pas encore ouvert. Les tailles sont collectées avant Stripe.
   // Au lancement, basculer PREORDERS_OPEN à true SEULEMENT après avoir configuré le serveur
