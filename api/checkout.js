@@ -4,7 +4,7 @@ const SIZES = new Set(['XS','S','M','L','XL']);
 export default async function handler(request, response) {
   response.setHeader('Cache-Control', 'no-store');
   if(request.method !== 'POST') return response.status(405).json({error:'Méthode non autorisée'});
-  if(process.env.UMY_PREORDERS_ENABLED !== 'true') return response.status(503).json({error:'Préventes non ouvertes'});
+  if(process.env.UMY_TEST_CHECKOUT_ENABLED !== 'true') return response.status(503).json({error:'Paiement test non activé'});
   const secret = process.env.STRIPE_SECRET_KEY;
   const price = process.env.STRIPE_PRICE_ID;
   const publicUrl = process.env.UMY_SITE_URL;
