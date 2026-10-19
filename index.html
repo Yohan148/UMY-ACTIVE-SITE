@@ -691,9 +691,9 @@
             <p class="umy-size-note">Les tailles XS à XL sont présentées à titre de préparation. Le guide définitif sera publié avant l'ouverture.</p>
             <div class="umy-order-summary"><span>SET 01 · Noir · 1 ensemble</span><strong id="umy-size-summary">Sélectionnez vos deux tailles</strong></div>
             <button type="submit" class="btn btn-dark btn-block" id="stripe-cta" disabled>Précommander mon SET 01 — bientôt disponible</button>
-            <p id="checkout-status" class="umy-checkout-status" role="status" aria-live="polite">Les préventes ne sont pas encore ouvertes.</p>
+            <p id="checkout-status" class="umy-checkout-status" role="status" aria-live="polite">Mode test Stripe : aucune commande réelle ne sera passée.</p>
           </form>
-          <p class="order-fine">Les paiements ne sont pas encore ouverts. Le prix et le délai de livraison seront confirmés avant toute commande.</p>
+          <p class="order-fine">Simulation Stripe uniquement : aucune commande ni livraison réelle. Les préventes ne sont pas encore ouvertes.</p>
         </div>
       </div>
     </div>
@@ -888,7 +888,7 @@
   // (UMY_PREORDERS_ENABLED, STRIPE_SECRET_KEY, STRIPE_PRICE_ID, STRIPE_SHIPPING_RATE_ID)
   // et après confirmation des tailles, du prix, de la livraison et des conditions de vente.
   (function(){
-    const PREORDERS_OPEN = false;
+    const PREORDERS_OPEN = true; // Sandbox only: server rejects requests unless UMY_TEST_CHECKOUT_ENABLED=true and sk_test_ key
     const form = document.getElementById('preorder-form');
     const button = document.getElementById('stripe-cta');
     const status = document.getElementById('checkout-status');
@@ -899,7 +899,7 @@
     function refresh(){
       summary.textContent = legging.value && bra.value ? 'Legging ' + legging.value + ' · Brassière ' + bra.value : 'Sélectionnez vos deux tailles';
       button.disabled = !PREORDERS_OPEN || !legging.value || !bra.value;
-      button.textContent = PREORDERS_OPEN ? 'Payer ma précommande →' : 'Précommander mon SET 01 — bientôt disponible';
+      button.textContent = PREORDERS_OPEN ? 'Tester le paiement Stripe — aucun débit réel →' : 'Précommander mon SET 01 — bientôt disponible';
     }
     legging.addEventListener('change',refresh);
     bra.addEventListener('change',refresh);
@@ -907,7 +907,7 @@
     form.addEventListener('submit',async function(event){
       event.preventDefault();
       if(!PREORDERS_OPEN || !legging.value || !bra.value) return;
-      button.disabled = true; status.textContent = 'Redirection vers le paiement sécurisé…';
+      button.disabled = true; status.textContent = 'Ouverture du paiement Stripe Sandbox…';
       try{
         const response = await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({legging:legging.value,brassiere:bra.value})});
         const data = await response.json();
@@ -915,7 +915,7 @@
         const url = new URL(data.url);
         if(url.protocol !== 'https:' || !url.hostname.endsWith('.stripe.com')) throw new Error('Adresse de paiement invalide');
         window.location.assign(url.href);
-      }catch(err){status.textContent = 'Le paiement est momentanément indisponible. Réessayez plus tard.';refresh();}
+      }catch(err){status.textContent = 'Test indisponible. Vérifiez l’activation UMY_TEST_CHECKOUT_ENABLED et la clé Stripe Sandbox dans Vercel.';refresh();}
     });
   })();
 </script>
