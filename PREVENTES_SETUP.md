@@ -1,6 +1,6 @@
 # UMY ACTIVE — activation des préventes (non activées)
 
-Le site reste **en mode préparation**, aucun paiement actif.
+Le site reste **en mode préparation**, aucun paiement actif. Le tarif UMY SET 01 a été fixé à **89 €**. Ne jamais mélanger une clé Stripe réelle avec un tarif de Sandbox.
 
 ## 1. À valider avant encaissement
 - Prix final TTC du SET 01, frais de livraison TTC et traitement de la TVA.
@@ -15,7 +15,7 @@ Dans Stripe, créer un produit SET 01 UMY Black avec un prix **unique** en EUR c
 
 ## 3. Variables d'environnement Vercel (côté serveur, jamais dans index.html)
 - STRIPE_SECRET_KEY = votre clé Stripe secrète (test pour essais)
-- STRIPE_PRICE_ID = identifiant price_... de l'ensemble
+- STRIPE_PRICE_ID = `price_1USArNDf5Xct8bhwoyotZTbU` (tarif UMY SET 01 déclaré par l'utilisateur dans la Sandbox, à confirmer par un paiement test)
 - STRIPE_SHIPPING_RATE_ID = identifiant shr_... de la livraison
 - UMY_SITE_URL = URL HTTPS officielle de la boutique
 - UMY_PREORDERS_ENABLED = true, uniquement à l'ouverture confirmée
