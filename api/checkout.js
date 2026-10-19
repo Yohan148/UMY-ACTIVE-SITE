@@ -26,7 +26,7 @@ export default async function handler(request, response) {
   params.set('line_items[0][price]',price);
   params.set('line_items[0][quantity]','1');
   params.set('shipping_options[0][shipping_rate_data][type]','fixed_amount');
-  params.set('shipping_options[0][shipping_rate_data][fixed_amount][amount]','0');
+  params.set('shipping_options[0][shipping_rate_data][fixed_amount][amount]', live ? process.env.UMY_LIVE_SHIPPING_CENTS : '0');
   params.set('shipping_options[0][shipping_rate_data][fixed_amount][currency]','eur');
   params.set('shipping_options[0][shipping_rate_data][display_name]',live ? process.env.UMY_LIVE_SHIPPING_DESCRIPTION : 'Livraison test (0 €)');
   params.set('shipping_address_collection[allowed_countries][0]','FR');
