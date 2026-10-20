@@ -691,9 +691,9 @@
             <p class="umy-size-note">Les tailles XS à XL sont présentées à titre de préparation. Le guide définitif sera publié avant l'ouverture.</p>
             <div class="umy-order-summary"><span>SET 01 · Noir · 1 ensemble</span><strong id="umy-size-summary">Sélectionnez vos deux tailles</strong></div>
             <button type="submit" class="btn btn-dark btn-block" id="stripe-cta" disabled>Précommander mon SET 01 — bientôt disponible</button>
-            <p id="checkout-status" class="umy-checkout-status" role="status" aria-live="polite">Mode test Stripe : aucune commande réelle ne sera passée.</p>
+            <p id="checkout-status" class="umy-checkout-status" role="status" aria-live="polite">Précommandes prochainement disponibles. Livraison estimée à 15 jours, délai prévu de 15 à 21 jours.</p>
           </form>
-          <p class="order-fine">Prix prévu : 109 € livraison incluse en France. Livraison estimée à 15 jours, avec un délai annoncé de 15 à 21 jours après confirmation de la commande. Les ventes ne sont pas encore ouvertes ; le paiement proposé ici est un test Stripe à 89 € sans débit réel.</p>
+          <p class="order-fine">Prix de l'ensemble : 109 €, livraison standard incluse en France. Livraison estimée à 15 jours, délai prévu de 15 à 21 jours après confirmation de la commande. Les précommandes s'ouvriront une fois les informations légales et les paramètres de paiement finalisés.</p>
         </div>
       </div>
     </div>
@@ -891,16 +891,16 @@
     banner.setAttribute('role','status');
     banner.style.cssText='position:fixed;z-index:10000;bottom:20px;left:20px;right:20px;max-width:500px;margin:auto;padding:18px 22px;background:#141418;color:#f2d3c5;border:1px solid #e8c8b9;border-radius:14px;box-shadow:0 12px 40px #0009;font:500 14px/1.6 Inter,sans-serif';
     document.body.appendChild(banner);
-    if(state==='cancel'){banner.textContent='Paiement test annulé : aucun achat effectué.';return;}
-    banner.textContent='Vérification de votre paiement test Stripe…';
+    if(state==='cancel'){banner.textContent='Paiement annulé : aucun achat effectué.';return;}
+    banner.textContent='Vérification de votre paiement Stripe…';
     const id=params.get('session_id');
     if(!id){banner.textContent='Impossible de vérifier cette session.';return;}
     try{
       const result=await fetch('/api/verify-checkout?session_id='+encodeURIComponent(id),{cache:'no-store'});
       const data=await result.json();
       if(!result.ok)throw new Error('check failed');
-      banner.textContent=data.paid?'Paiement TEST confirmé ! Legging '+(data.legging||'—')+' · Brassière '+(data.brassiere||'—')+'. Aucune commande réelle.':'Paiement non confirmé. Vérifiez la session dans Stripe Sandbox.';
-    }catch{banner.textContent='La confirmation automatique n’est pas disponible. Vérifiez le statut dans Stripe Sandbox.';}
+      banner.textContent=data.paid?'Paiement confirmé ! Legging '+(data.legging||'—')+' · Brassière '+(data.brassiere||'—')+'. Merci pour votre commande.':'Paiement non confirmé. Veuillez vérifier votre compte ou contacter notre service client.';
+    }catch{banner.textContent='La confirmation automatique n’est pas disponible. Vérifiez votre reçu Stripe ou contactez notre service client.';}
   })();
 
   // Le compte à rebours sera activé seulement pour une vraie échéance de précommande.
@@ -909,7 +909,8 @@
   // (UMY_PREORDERS_ENABLED, STRIPE_SECRET_KEY, STRIPE_PRICE_ID, STRIPE_SHIPPING_RATE_ID)
   // et après confirmation des tailles, du prix, de la livraison et des conditions de vente.
   (function(){
-    const PREORDERS_OPEN = true; // Sandbox only: server rejects requests unless UMY_TEST_CHECKOUT_ENABLED=true and sk_test_ key
+    let PREORDERS_OPEN = false;
+    fetch('/api/checkout-config',{cache:'no-store'}).then(r=>r.json()).then(cfg=>{PREORDERS_OPEN=cfg.live===true;status.textContent=PREORDERS_OPEN?'Précommande sécurisée à 109 € · livraison offerte en France · délai 15 à 21 jours.':'Les précommandes ne sont pas encore activées.';refresh();}).catch(()=>{PREORDERS_OPEN=false;refresh();});
     const form = document.getElementById('preorder-form');
     const button = document.getElementById('stripe-cta');
     const status = document.getElementById('checkout-status');
@@ -920,7 +921,7 @@
     function refresh(){
       summary.textContent = legging.value && bra.value ? 'Legging ' + legging.value + ' · Brassière ' + bra.value : 'Sélectionnez vos deux tailles';
       button.disabled = !PREORDERS_OPEN || !legging.value || !bra.value;
-      button.textContent = PREORDERS_OPEN ? 'Tester le paiement Stripe — aucun débit réel →' : 'Précommander mon SET 01 — bientôt disponible';
+      button.textContent = PREORDERS_OPEN ? 'Précommander mon SET 01 — 109 € →' : 'Précommander mon SET 01 — bientôt disponible';
     }
     legging.addEventListener('change',refresh);
     bra.addEventListener('change',refresh);
@@ -928,7 +929,7 @@
     form.addEventListener('submit',async function(event){
       event.preventDefault();
       if(!PREORDERS_OPEN || !legging.value || !bra.value) return;
-      button.disabled = true; status.textContent = 'Ouverture du paiement Stripe Sandbox…';
+      button.disabled = true; status.textContent = 'Ouverture du paiement sécurisé Stripe…';
       try{
         const response = await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({legging:legging.value,brassiere:bra.value})});
         const data = await response.json();
@@ -936,7 +937,7 @@
         const url = new URL(data.url);
         if(url.protocol !== 'https:' || !url.hostname.endsWith('.stripe.com')) throw new Error('Adresse de paiement invalide');
         window.location.assign(url.href);
-      }catch(err){status.textContent = 'Test indisponible. Vérifiez l’activation UMY_TEST_CHECKOUT_ENABLED et la clé Stripe Sandbox dans Vercel.';refresh();}
+      }catch(err){status.textContent = 'Paiement indisponible pour le moment. Réessayez plus tard.';refresh();}
     });
   })();
 </script>
