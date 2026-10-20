@@ -12,7 +12,7 @@ export default async function handler(request, response) {
   if(!secret || !price || !publicUrl) return response.status(503).json({error:'Configuration de paiement incomplète'});
   if(live) {
     if(!secret.startsWith('sk_live_') || price !== 'price_1USXCEDPF7nqy2IhMkj36fDC') return response.status(503).json({error:'Paramètres Stripe réels non validés'});
-    if(!process.env.UMY_LIVE_SHIPPING_DESCRIPTION || !process.env.UMY_LIVE_DELIVERY_ESTIMATE) return response.status(503).json({error:'Livraison réelle non configurée'});
+    if(!process.env.UMY_LIVE_SHIPPING_DESCRIPTION || !process.env.UMY_LIVE_DELIVERY_ESTIMATE || !/^\d+$/.test(process.env.UMY_LIVE_SHIPPING_CENTS || '')) return response.status(503).json({error:'Livraison réelle non configurée'});
   } else if(!secret.startsWith('sk_test_')) return response.status(503).json({error:'Clé Stripe Sandbox requise pour les essais'});
   const {legging,brassiere} = request.body || {};
   if(!SIZES.has(legging) || !SIZES.has(brassiere)) return response.status(400).json({error:'Tailles invalides'});
