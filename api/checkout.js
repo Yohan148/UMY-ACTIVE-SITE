@@ -11,7 +11,7 @@ export default async function handler(request, response) {
   const publicUrl = process.env.UMY_SITE_URL;
   if(!secret || !price || !publicUrl) return response.status(503).json({error:'Configuration de paiement incomplète'});
   if(live) {
-    if(!secret.startsWith('sk_live_') || price !== 'price_1USDYsDPF7nqy2Ih6r9nhNSg') return response.status(503).json({error:'Paramètres Stripe réels non validés'});
+    if(!secret.startsWith('sk_live_') || price !== 'price_1USXCEDPF7nqy2IhMkj36fDC') return response.status(503).json({error:'Paramètres Stripe réels non validés'});
     if(!process.env.UMY_LIVE_SHIPPING_DESCRIPTION || !process.env.UMY_LIVE_DELIVERY_ESTIMATE) return response.status(503).json({error:'Livraison réelle non configurée'});
   } else if(!secret.startsWith('sk_test_')) return response.status(503).json({error:'Clé Stripe Sandbox requise pour les essais'});
   const {legging,brassiere} = request.body || {};
